@@ -10,11 +10,20 @@ public class Player {
         playerName = inName;
     }
 
-public void saveTime(double newTime) throws FileNotFoundException {
-timeSheet = new File("/timeslips" + playerName);
+    public void saveTime(double newTime) throws FileNotFoundException {
+        timeSheet = new File("/timeslips" + playerName);
 
-PrintWriter timeSave = new PrintWriter(timeSheet);
+        PrintWriter timeSave = new PrintWriter(timeSheet);
 
-timeSave.println(newTime);
-}
+        timeSave.println(newTime);
+    }
+
+    public String getPlayerName(){
+        return playerName;
+    }
+    public long getTime() throws FileNotFoundException {
+        FileInputStream file = new FileInputStream("/timeslips" + playerName);
+        Scanner in = new Scanner(file);
+        return in.nextLong();
+    }
 }
