@@ -9,7 +9,23 @@ class ButtonListener implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        String player1Name = textInput1.getText();
+        String player2Name = textInput2.getText();
+        System.out.println("button pressed");
+        System.out.println(player1Name);
+        System.out.println(player2Name);
 
+
+        if (!player1Name.equals("") && !player2Name.equals("")){
+            Player player1 = new Player(player1Name);
+            Player player2 = new Player(player2Name);
+            System.out.println("names in");
+            Game gameOn = new Game();
+            gameOn.Gamerun(player1, player2);
+
+
+
+        }
     }
 
     }
@@ -34,6 +50,7 @@ public class Main {
         frame.getContentPane().add(player1Name);
         frame.getContentPane().add(player2Name);
         button.addActionListener(new ButtonListener(player1Name, player2Name));
+        frame.getContentPane().add(button);
 
         frame.pack();
         frame.setVisible(true);
